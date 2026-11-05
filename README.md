@@ -1,4 +1,4 @@
-# Package Name
+# hero_chassis_controller
 
 ## Overview
 
@@ -99,19 +99,19 @@ Now, create a catkin workspace, clone the package, build it, done!
 	rosdep install --from-path src
 	catkin_make
 	source devel/setup.bash
-	roslaunch ros_package_template ros_package_template.launch
+	roslaunch hero_chassis_controller hero_chassis_controller.launch
 
 ### Unit Tests
 
 Run the unit tests with
 
-	catkin_make run_tests_ros_package_template
+	catkin_make run_tests_hero_chassis_controller
 
 ### Static code analysis
 
 Run the static code analysis with
 
-	catkin_make roslint_ros_package_template
+	catkin_make roslint_hero_chassis_controller
 
 ## Usage
 
@@ -119,7 +119,7 @@ Describe the quickest way to run this software, for example:
 
 Run the main node with
 
-	roslaunch ros_package_template ros_package_template.launch
+	roslaunch hero_chassis_controller hero_chassis_controller.launch
 
 ## Config files
 
@@ -147,7 +147,7 @@ Config file folder/set 2
 
 ## Nodes
 
-### ros_package_template
+### hero_chassis_controller
 
 Reads temperature measurements and computed the average.
 
@@ -167,7 +167,7 @@ Reads temperature measurements and computed the average.
 
   Returns information about the current average. For example, you can trigger the computation from the console with
 
-  	rosservice call /ros_package_template/get_average
+  	rosservice call /hero_chassis_controller/get_average
 
 #### Parameters
 
@@ -185,7 +185,7 @@ Reads temperature measurements and computed the average.
 
 ## Bugs & Feature Requests
 
-Please report bugs and request features using the [Issue Tracker](https://github.com/gdut-dynamic-x/rm_template/issues)
+Please report bugs and request features using the [Issue Tracker](https://github.com/gdut-dynamic-x/hero_chassis_controller/issues)
 .
 
 

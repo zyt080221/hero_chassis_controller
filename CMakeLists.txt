@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(ros_package_template)
+project(hero_chassis_controller)
 
 ## Use C++14
 set(CMAKE_CXX_STANDARD 14)
@@ -14,6 +14,7 @@ find_package(catkin REQUIRED
     COMPONENTS
     roscpp
     sensor_msgs
+    std_srvs
     roslint
     )
 
@@ -40,6 +41,7 @@ catkin_package(
     CATKIN_DEPENDS
     roscpp
     sensor_msgs
+    std_srvs
     DEPENDS
     ## find_package(Eigen3) provides a non standard EIGEN3_INCLUDE_DIR instead of Eigen3_INCLUDE_DIRS.
     ## Therefore, the DEPEND does not work as expected and we need to add the directory to the INCLUDE_DIRS
@@ -73,7 +75,7 @@ target_compile_features(${PROJECT_NAME}_core INTERFACE cxx_std_11)
 ## Declare cpp executables
 add_executable(${PROJECT_NAME}
     src/${PROJECT_NAME}_node.cpp
-    src/RosPackageTemplate.cpp
+    src/HeroChassisController.cpp
     )
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_11)
 
@@ -129,7 +131,7 @@ if (${CATKIN_ENABLE_TESTING})
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
   ## Add gtest based cpp test target and link libraries
   catkin_add_gtest(${PROJECT_NAME}-test
-      test/test_ros_package_template.cpp
+      test/test_hero_chassis_controller.cpp
       test/AlgorithmTest.cpp)
   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME}_core)
 endif ()
