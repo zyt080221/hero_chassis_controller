@@ -198,3 +198,4 @@ Please report bugs and request features using the [Issue Tracker](https://github
 [std_srvs/Trigger]: http://docs.ros.org/api/std_srvs/html/srv/Trigger.html
 
 [sensor_msgs/Temperature]: http://docs.ros.org/api/sensor_msgs/html/msg/Temperature.html
+这是主分支添加的重要更新
