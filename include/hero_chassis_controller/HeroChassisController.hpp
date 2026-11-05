@@ -63,4 +63,4 @@ class HeroChassisController {
   Algorithm algorithm_;
 };
 
-} /* namespace */
+}  // namespace hero_chassis_controller

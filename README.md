@@ -1,5 +1,26 @@
 # hero_chassis_controller
+##简介
+以 rm_template 为模版，创建名为“ hero_chassis_controller”新仓库
+用于控制在Gazebo中的英雄机器人底盘
 
+
+##更新记录
+2026-11-05：基于模板创建了全新的 hero_chassis_controller 包，完成了目录结构、CMakeLists.txt 和 package.xml 的重命名与清理
+2026-11-05：完善了 README 文档，解决了 Git 分支合并冲突
+2026-11-05：完成了代码规范（使用了clang-format 工具，采用了 Google C++ 代码规范）
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
 ## Overview
 
 This is a template: replace, remove, and add where required. Describe here what this package does and what it's meant

@@ -1,8 +1,7 @@
 #pragma once
 
-#include <memory>
-
 #include <Eigen/Core>
+#include <memory>
 
 namespace hero_chassis_controller {
 
@@ -40,7 +39,6 @@ class Algorithm {
   double getAverage() const;
 
  private:
-
   //! Forward declared structure that will contain the data
   struct Data;
 
@@ -48,4 +46,4 @@ class Algorithm {
   std::unique_ptr<Data> data_;
 };
 
-} /* namespace */
+}  // namespace hero_chassis_controller
