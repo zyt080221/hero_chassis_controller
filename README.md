@@ -7,7 +7,8 @@
 - 2026-11-05：基于模板创建了全新的 hero_chassis_controller 包，完成了目录结构、CMakeLists.txt 和 package.xml 的重命名与清理
 - 2026-11-05：完善了 README 文档，解决了 Git 分支合并冲突
 - 2026-11-05：完成了代码规范（使用了clang-format 工具，采用了 Google C++ 代码规范）
-
+- 2026-11-09: 使用 control_toolbox::Pid 实现了四个轮子的 PID 闭环控制，成功完成选做题4
+- 2026-11-09: 完成选做题5，实现了麦克纳姆轮底盘的逆运动学解算。通过订阅 `/cmd_vel` 话题的 `geometry_msgs/Twist` 消息，利用逆运动学公式计算出四个轮子的期望角速度
 
 
 

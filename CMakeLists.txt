@@ -14,7 +14,15 @@ find_package(catkin REQUIRED
     roscpp
     roslint
     control_toolbox
+    dynamic_reconfigure
+    nav_msgs
+    tf
     )
+
+
+generate_dynamic_reconfigure_options(
+  cfg/PidConfig.cfg
+)
 
 catkin_package(
     INCLUDE_DIRS
@@ -28,6 +36,10 @@ catkin_package(
     pluginlib
     roscpp
     roslint
+    control_toolbox
+    dynamic_reconfigure
+    nav_msgs
+    tf
     )
 
 include_directories(
@@ -38,6 +50,8 @@ include_directories(
 add_library(${PROJECT_NAME} SHARED
     src/HeroChassisController.cpp
     )
+
+add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_dependencies(${PROJECT_NAME}
     ${catkin_EXPORTED_TARGETS}
