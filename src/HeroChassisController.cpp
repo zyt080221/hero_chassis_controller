@@ -49,6 +49,7 @@ bool HeroChassisController::init(
   controller_nh.param("ly", ly_, ly_);
   controller_nh.param("kp", kp_, kp_);
   controller_nh.param("max_effort", max_effort_, max_effort_);
+  controller_nh.param("use_global_coord", use_global_coord_, false);
 
   odom_pub_ = root_nh.advertise<nav_msgs::Odometry>("/odom", 50);
   cmd_vel_sub_ = root_nh.subscribe(
@@ -111,9 +112,26 @@ void HeroChassisController::update(const ros::Time &time,
 
 void HeroChassisController::cmdVelCallback(
     const geometry_msgs::Twist::ConstPtr &msg) {
-  const double vx = msg->linear.x;
-  const double vy = msg->linear.y;
+  double vx = msg->linear.x;
+  double vy = msg->linear.y;
   const double wz = msg->angular.z;
+
+  if (use_global_coord_) {
+    try {
+      tf::StampedTransform transform;
+      // T_base_odom: transform points/vectors from odom into base_link
+      tf_listener_.lookupTransform("base_link", "odom", ros::Time(0),
+                                   transform);
+      const tf::Vector3 global_vel(vx, vy, 0.0);
+      const tf::Vector3 local_vel = transform.getBasis() * global_vel;
+      vx = local_vel.x();
+      vy = local_vel.y();
+    } catch (tf::TransformException &ex) {
+      ROS_WARN_THROTTLE(1.0, "TF Exception: %s", ex.what());
+      return;
+    }
+  }
+
   const double k = lx_ + ly_;
   const double r = wheel_radius_;
 

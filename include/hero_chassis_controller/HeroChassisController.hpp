@@ -14,6 +14,7 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_datatypes.h>
+#include <tf/transform_listener.h>
 
 #include <hero_chassis_controller/PidConfig.h>
 
@@ -42,6 +43,8 @@ class HeroChassisController
   ros::Subscriber cmd_vel_sub_;
   ros::Publisher odom_pub_;
   tf::TransformBroadcaster odom_broadcaster_;
+  tf::TransformListener tf_listener_;
+  bool use_global_coord_{false};
   boost::shared_ptr<dynamic_reconfigure::Server<
       hero_chassis_controller::PidConfig>>
       dyn_srv_;

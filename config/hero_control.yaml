@@ -1,0 +1,8 @@
+hero_chassis_controller:
+  type: hero_chassis_controller/HeroChassisController
+  joints:
+    - left_front_wheel_joint
+    - right_front_wheel_joint
+    - left_back_wheel_joint
+    - right_back_wheel_joint
+  use_global_coord: true
