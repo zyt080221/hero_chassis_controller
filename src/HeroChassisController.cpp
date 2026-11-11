@@ -3,10 +3,9 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <pluginlib/class_list_macros.hpp>
 #include <string>
 #include <vector>
-
-#include <pluginlib/class_list_macros.hpp>
 
 namespace hero_chassis_controller {
 
@@ -21,8 +20,8 @@ bool HeroChassisController::init(
   dyn_srv_.reset(
       new dynamic_reconfigure::Server<hero_chassis_controller::PidConfig>(
           controller_nh));
-  dynamic_reconfigure::Server<
-      hero_chassis_controller::PidConfig>::CallbackType callback;
+  dynamic_reconfigure::Server<hero_chassis_controller::PidConfig>::CallbackType
+      callback;
   callback =
       boost::bind(&HeroChassisController::reconfigureCallback, this, _1, _2);
   dyn_srv_->setCallback(callback);
@@ -39,7 +38,7 @@ bool HeroChassisController::init(
       joints_.push_back(effort_joint_interface->getHandle(name));
     } catch (const hardware_interface::HardwareInterfaceException &ex) {
       ROS_ERROR_STREAM("Could not get joint handle '" << name
-                                                     << "': " << ex.what());
+                                                      << "': " << ex.what());
       return false;
     }
   }
@@ -75,8 +74,7 @@ void HeroChassisController::update(const ros::Time &time,
   // 2. Mecanum forward kinematics
   const double vx = (v0 + v1 + v2 + v3) * wheel_radius_ / 4.0;
   const double vy = (-v0 + v1 + v2 - v3) * wheel_radius_ / 4.0;
-  const double vth =
-      (-v0 + v1 - v2 + v3) * wheel_radius_ / (4.0 * (lx_ + ly_));
+  const double vth = (-v0 + v1 - v2 + v3) * wheel_radius_ / (4.0 * (lx_ + ly_));
 
   // 3. Integrate velocity to pose
   const double dt = period.toSec();

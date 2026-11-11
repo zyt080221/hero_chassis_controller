@@ -1,35 +1,32 @@
 #pragma once
 
-#include <cstdint>
-#include <vector>
-
-#include <boost/shared_ptr.hpp>
 #include <control_toolbox/pid.h>
 #include <controller_interface/controller.h>
 #include <dynamic_reconfigure/server.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <geometry_msgs/Twist.h>
 #include <hardware_interface/joint_command_interface.h>
+#include <hero_chassis_controller/PidConfig.h>
 #include <nav_msgs/Odometry.h>
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_listener.h>
 
-#include <hero_chassis_controller/PidConfig.h>
+#include <boost/shared_ptr.hpp>
+#include <cstdint>
+#include <vector>
 
 namespace hero_chassis_controller {
 
-class HeroChassisController
-    : public controller_interface::Controller<
-          hardware_interface::EffortJointInterface> {
+class HeroChassisController : public controller_interface::Controller<
+                                  hardware_interface::EffortJointInterface> {
  public:
   HeroChassisController() = default;
   ~HeroChassisController() override = default;
 
   bool init(hardware_interface::EffortJointInterface *effort_joint_interface,
-            ros::NodeHandle &root_nh,
-            ros::NodeHandle &controller_nh) override;
+            ros::NodeHandle &root_nh, ros::NodeHandle &controller_nh) override;
 
   void update(const ros::Time &time, const ros::Duration &period) override;
 
@@ -45,8 +42,8 @@ class HeroChassisController
   tf::TransformBroadcaster odom_broadcaster_;
   tf::TransformListener tf_listener_;
   bool use_global_coord_{false};
-  boost::shared_ptr<dynamic_reconfigure::Server<
-      hero_chassis_controller::PidConfig>>
+  boost::shared_ptr<
+      dynamic_reconfigure::Server<hero_chassis_controller::PidConfig>>
       dyn_srv_;
 
   double wheel_radius_{0.05};
