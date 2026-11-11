@@ -4,12 +4,13 @@
 
 
 ##更新记录
-- 2026-11-05：基于模板创建了全新的 hero_chassis_controller 包，完成了目录结构、CMakeLists.txt 和 package.xml 的重命名与清理
-- 2026-11-05：完善了 README 文档，解决了 Git 分支合并冲突
-- 2026-11-05：完成了代码规范（使用了clang-format 工具，采用了 Google C++ 代码规范）
-- 2026-11-09: 使用 control_toolbox::Pid 实现了四个轮子的 PID 闭环控制，成功完成选做题4
+- 2026-11-05：基于模板创建了全新的 hero_chassis_controller 包，完成了目录结构、`CMakeLists.txt` 和 `package.xml`的重命名与清理
+- 2026-11-05：完善了 `README` 文档，解决了 Git 分支合并冲突
+- 2026-11-05：完成了代码规范（使用了`clang-format` 工具，采用了 `Google C++` 代码规范）
+- 2026-11-09: 使用 `control_toolbox::Pid` 实现了四个轮子的 `PID` 闭环控制，成功完成选做题4
 - 2026-11-09: 完成选做题5，实现了麦克纳姆轮底盘的逆运动学解算。通过订阅 `/cmd_vel` 话题的 `geometry_msgs/Twist` 消息，利用逆运动学公式计算出四个轮子的期望角速度
-
+- 2026-11-10:完成选做题6，使用正运动学根据轮子实际转速反推底盘速度，实现里程计积分，并将数据发布至 `/odom` 话题及广播 `odom` 到 `base_link` 的 TF 坐标变换
+- 2026-10-10:完成选做题7，利用 `tf::TransformListener` 实现坐标变换，支持通过配置文件切换，将全局坐标系下的速度指令转换为底盘坐标系速度后再执行逆运动学
 
 
 
